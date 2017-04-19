@@ -48,6 +48,10 @@ for order in order_results['orders']:
 		if "CFE" not in sku:
 			continue
 
+		# We only want the following coffee skus, so skip all others
+		if not any(x in sku for x in ['10oz', '1lb', 'KILO', '5lb']):
+			continue
+
 		# Split the sku at the grind (since it has nothing to do with this)
 		sku = sku.split('-')[1] + '-' + sku.split('-')[2]
 
