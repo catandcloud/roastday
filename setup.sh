@@ -2,7 +2,7 @@
 
 # Install Xcode and Homebrew
 /usr/bin/xcode-select --install
-/usr/local/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Install python using brew
 /usr/local/bin/brew install python
@@ -18,4 +18,4 @@
 source $HOME/.virtualenvs/roastday/bin/activate
 
 # Pip install requirements for app
-$HOME/.virtualenvs/roastday/bin/pip install -r requirements.txt
+$HOME/.virtualenvs/roastday/bin/pip install -r "$HOME/Dropbox/Cat & Cloud Admin/Roasting/roastdayapp/requirements.txt"
