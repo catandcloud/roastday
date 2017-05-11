@@ -12,6 +12,7 @@ api_secret = 'e5e6bdfc7333440a867d2b34ef133b18'
 base_endpoint = 'https://ssapi.shipstation.com/'
 
 # End the order query at midnight on the current day
+# end_date = str(arrow.utcnow().to('US/Pacific'))
 end_date = str(arrow.utcnow().to('US/Pacific').replace(hour=0, minute=0, second=0, microsecond=0))
 
 endpoint = 'orders'
@@ -97,7 +98,7 @@ else:
 # Init the new rows list, which will store the quantities for each sku
 new_rows_list = []
 
-with open(roast_dir + '/Roast Day Template New.csv', 'r') as csvfile:	
+with open(roast_dir + '/Roast Day Template.csv', 'r') as csvfile:	
 	reader = csv.DictReader(csvfile)
 
 	# Loop through rows of csv file
