@@ -12,8 +12,8 @@ api_secret = 'e5e6bdfc7333440a867d2b34ef133b18'
 base_endpoint = 'https://ssapi.shipstation.com/'
 
 # End the order query at midnight on the current day
-# end_date = str(arrow.utcnow().to('US/Pacific'))
-end_date = str(arrow.utcnow().to('US/Pacific').replace(hour=0, minute=0, second=0, microsecond=0))
+end_date = str(arrow.utcnow().to('US/Pacific'))
+# end_date = str(arrow.utcnow().to('US/Pacific').replace(hour=0, minute=0, second=0, microsecond=0))
 
 endpoint = 'orders'
 params = 'orderDateEnd=' + end_date + '&orderStatus=awaiting_shipment'
