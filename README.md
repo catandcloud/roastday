@@ -48,3 +48,10 @@ In order to make sure we end up with the right amount of coffee to roast, we nee
 * Refer to the "Batches" column to determine how many batches of each coffee you will need to roast
 * At the end of fulfillment day, weigh the total pounds of each coffee and input the "EOD STOCK" – this will become the next roast day's "IN STOCK"
 * Never delete anything in the Roasting directory before asking Alex :-)
+
+
+
+
+For WINDOWS, follow these steps:
+https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation
+http://timmyreilly.azurewebsites.net/python-pip-virtualenv-installation-on-windows/

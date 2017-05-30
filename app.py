@@ -3,6 +3,7 @@ import json
 import arrow
 import csv
 import os
+from os.path import expanduser
 import shutil
 
 # Shipstation API creds
@@ -69,7 +70,9 @@ for order in order_results['orders']:
 		coffees[sku] += quantity
 
 # Get the user's home dir from the shell
-home_dir = os.getenv('HOME')
+# home_dir = os.getenv('HOME')
+home_dir = expanduser("~")
+
 roast_dir = home_dir + '/Dropbox/Cat & Cloud Admin/Roasting'
 
 # Open up the previous roast day csv file, copy EOD Stock
@@ -98,7 +101,7 @@ else:
 # Init the new rows list, which will store the quantities for each sku
 new_rows_list = []
 
-with open(roast_dir + '/Roast Day Template.csv', 'r') as csvfile:	
+with open(roast_dir + '/Roast Day Template.csv', 'rb') as csvfile:	
 	reader = csv.DictReader(csvfile)
 
 	# Loop through rows of csv file
@@ -119,7 +122,7 @@ with open(roast_dir + '/Roast Day Template.csv', 'r') as csvfile:
 # Write to a new csv file
 curr_roast_file = '%s_Roast.csv' % arrow.utcnow().to('US/Pacific').format('YYYY-MM-DD')
 write_file = roast_dir + '/' + curr_roast_file
-with open(write_file, 'w') as csvfile:
+with open(write_file, 'wb') as csvfile:
 	fieldnames = ['SKU', 'Coffee', '10oz', '1lb', 'KILO', '5lb', 'IN STOCK', 'ROASTED LBS', 'GREEN LBS', 'BATCHES', 'EOD STOCK']
 	writer = csv.DictWriter(csvfile, fieldnames)
 	
