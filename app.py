@@ -5,12 +5,10 @@ import csv
 import os
 from os.path import expanduser
 import shutil
+from modules.shipstation.models import Shipstation
 
-# Shipstation API creds
-api_key = '1faba07e6a5845e7a52111ccda1dae23'
-api_secret = 'e5e6bdfc7333440a867d2b34ef133b18'
-
-base_endpoint = 'https://ssapi.shipstation.com/'
+# Instantiate the Shipstation object
+ship = Shipstation()
 
 # End the order query at midnight on the current day
 end_date = str(arrow.utcnow().to('US/Pacific'))
@@ -18,12 +16,8 @@ end_date = str(arrow.utcnow().to('US/Pacific'))
 
 endpoint = 'orders'
 params = 'orderDateEnd=' + end_date + '&orderStatus=awaiting_shipment'
-api_endpoint = endpoint + '?' + params
 
-url = '{}{}'.format(base_endpoint, api_endpoint)
-r = requests.get(url, auth=(api_key, api_secret))
-
-order_results = r.json()
+order_results = ship.make_api_query(endpoint, params)
 
 # print json.dumps(order_results['orders'][0], indent=4)
 
