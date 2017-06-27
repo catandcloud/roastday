@@ -73,7 +73,7 @@ for order in order_results['orders']:
 # home_dir = os.getenv('HOME')
 home_dir = expanduser("~")
 
-roast_dir = home_dir + '/Dropbox/Cat & Cloud Admin/Roasting'
+roast_dir = home_dir + '/Dropbox/Cat & Cloud Admin/Roastery Folders/Roasting'
 
 # Open up the previous roast day csv file, copy EOD Stock
 prev_roast_file = None
