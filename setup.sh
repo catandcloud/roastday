@@ -26,4 +26,4 @@ source $HOME/.virtualenvs/roastday/bin/activate
 
 # Pip install requirements for app
 command -v $HOME/.virtualenvs/roastday/bin/pip >/dev/null 2>&1 || { echo >&2 "Virtualenv not installed correctly – Consult Alex. Aborting."; exit 1; }
-$HOME/.virtualenvs/roastday/bin/pip install -r "$HOME/Dropbox/Cat & Cloud Admin/Roasting/roastdayapp/requirements.txt"
+$HOME/.virtualenvs/roastday/bin/pip install -r "$HOME/Dropbox/Cat & Cloud Admin/Roastery Folders/Roasting/roastdayapp/requirements.txt"
