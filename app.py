@@ -21,9 +21,9 @@ params = 'orderDateEnd=' + end_date + '&orderStatus=awaiting_shipment'
 api_endpoint = endpoint + '?' + params
 
 url = '{}{}'.format(base_endpoint, api_endpoint)
-r = requests.get(url, auth=(api_key, api_secret))
+results = requests.get(url, auth=(api_key, api_secret))
 
-order_results = r.json()
+order_results = results.json()
 
 # print json.dumps(order_results['orders'][0], indent=4)
 
@@ -52,7 +52,7 @@ for order in order_results['orders']:
 			continue
 
 		# We only want the following coffee skus, so skip all others
-		if not any(x in sku for x in ['10oz', '1lb', 'KILO', '5lb']):
+		if not any(x in sku for x in ['10oz', 'KILO', '5lb']):
 			continue
 
 		# Split the sku at the grind (since it has nothing to do with this)
@@ -101,7 +101,7 @@ else:
 # Init the new rows list, which will store the quantities for each sku
 new_rows_list = []
 
-with open(roast_dir + '/Roast Day Template.csv', 'rb') as csvfile:	
+with open(roast_dir + '/templates/Roast Day Template.csv', 'rb') as csvfile:	
 	reader = csv.DictReader(csvfile)
 
 	# Loop through rows of csv file
@@ -123,7 +123,7 @@ with open(roast_dir + '/Roast Day Template.csv', 'rb') as csvfile:
 curr_roast_file = '%s_Roast.csv' % arrow.utcnow().to('US/Pacific').format('YYYY-MM-DD')
 write_file = roast_dir + '/' + curr_roast_file
 with open(write_file, 'wb') as csvfile:
-	fieldnames = ['SKU', 'Coffee', '10oz', '1lb', 'KILO', '5lb', 'IN STOCK', 'ROASTED LBS', 'GREEN LBS', 'BATCHES', 'EOD STOCK']
+	fieldnames = ['SKU', 'Coffee', '10oz', 'KILO', '5lb', 'IN STOCK', 'ROASTED LBS', 'GREEN LBS', 'BATCHES', 'EOD STOCK']
 	writer = csv.DictWriter(csvfile, fieldnames)
 	
 	writer.writeheader()
